@@ -13,6 +13,6 @@ python back/manage.py migrate
 
 python back/manage.py loaddata genres.json movies.json
 
-cd ../front
+cd /front
 npm install
 npm run build
