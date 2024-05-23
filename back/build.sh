@@ -3,15 +3,15 @@
 set -o errexit
 
 # Modify this line as needed for your package manager (pip, poetry, etc.)
-pip install -r back/requirements.txt
+pip install -r requirements.txt
 
 # Convert static asset files
-python back/manage.py collectstatic --no-input
+python manage.py collectstatic --no-input
 
 # Apply any outstanding database migrations
-python back/manage.py migrate
+python manage.py migrate
 
-python back/manage.py loaddata genres.json movies.json
+python manage.py loaddata genres.json movies.json
 
 cd ../front
 npm install
