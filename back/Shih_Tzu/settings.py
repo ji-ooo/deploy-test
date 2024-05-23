@@ -34,17 +34,22 @@ OPENAI_API_KEY = env('OPENAI_API_KEY')
 SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+if DEBUG:
+    ALLOWED_HOSTS = []
+    CORS_ALLOWED_ORIGINS = [
+        'http://localhost:8000',
+        'http://127.0.0.1:8000',
+        'http://localhost:5173',
+        'http://127.0.0.1:5173',
+    ]
+else:
+    ALLOWED_HOSTS = ['deploy-test-ha4z.onrender.com']
 
-CORS_ALLOWED_ORIGINS = [
-    'http://localhost:8000',
-    'http://127.0.0.1:8000',
-    'http://localhost:5173',
-    'http://127.0.0.1:5173',
-]
-
+    CORS_ALLOWED_ORIGINS = [
+        'https://deploy-test-1-15u0.onrender.com',
+    ]
 # Application definition
 
 INSTALLED_APPS = [
@@ -180,7 +185,10 @@ if not DEBUG:
 
     STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+    os.path.join(BASE_DIR, 'front', 'dist'),
+]
 
 # STATICFILES_DIRS = [os.path.join(BASE_DIR, 'assets')]
 
