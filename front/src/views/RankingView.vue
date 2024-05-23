@@ -115,7 +115,6 @@ onMounted(() => {
 }
 .container-inner2 {
   width: 100%;
-  max-width: 740px;
   min-height: 210px;
   height: 100%;
   padding-top: 20px;

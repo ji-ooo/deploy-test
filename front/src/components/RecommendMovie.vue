@@ -11,7 +11,7 @@
         <image id="image0_186_4" width="30" height="30" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAACXBIWXMAAAsTAAALEwEAmpwYAAABgklEQVR4nO2WPUsDQRCGD2NsNJUasDdNtPAfiH0KTTCW2qWIH+jPCFb6E9T4UwSx8QMSjUmt2EULrR6ZOMKyRG9v7xIE88JBCPPOczs7u3NBMNJfETABlIE60ATe9HkAzoANIJ00tAi0CdcjsJYEcAyoGYmvgV0gD0zqs6D/3Rlxh3HBNU30DlTkRUJesqqxovk45UUTLUfwLQGbcRqp3cNCxSvJV55j4CiKoWzs6Y/ldayYqOhqOlfDjid0BngywC9A1sV4r4a8J1jOuq26i7GrwRlPsFwwthq/GeQWstX0hGfU/zq4EvURsKj+lkvwtFdT9M91oDlOXA0lA1zyhKaMK3R9cAffErCt0A4wHvgI2JJrMEL8CvCh4IIvNGfc19WQIZHSlX5Dn4FZL7BIRpyx57Jve9qxMhKn9Pe+NRYFKrr1bc6egFUd8mGSPS3IShWaCDytw+PU+vRpyZGR7jUbSWCJwaNKV36j8AYwF/wXeNYo++XQwAb8CrgYKnikQPUJRJkZfOuuONUAAAAASUVORK5CYII="/>
         </defs>
         </svg>
-        <p>다시 받기</p>
+        <p>다른 조건 검색</p>
       </div>
     </div>
     <div class="wrapper">
@@ -30,10 +30,10 @@
             <div class="slide-inner">
               <div class="slide-title">
                 <p class="wrapper_title"><strong>|</strong> {{ slide.title }}</p>
-                <p class="wrapper_date">{{ slide.released_date}}</p>
+                <p class="wrapper_date"><strong>개봉일 </strong> {{ slide.released_date}}</p>
               </div>
               <div class="carousel__item" @click="openModal(slide)">
-                <img :src="`https://image.tmdb.org/t/p/original${slide.backdrop_path}`" width="90%" height="auto" class="slideImg1">
+                <img :src="`https://image.tmdb.org/t/p/original${slide.backdrop_path}`" width="90%" height="auto" class="slideImg1" alt="포스터가 없는 영화입니다.">
               </div>
             </div>
           </slide>
@@ -134,6 +134,7 @@ watch(() => props.movies, () => {
   margin-left: 20px;
 }
 .recommendMovie-container{
+  width: 100%;
   height: 92vh;
 }
 .title-area{
@@ -176,7 +177,7 @@ watch(() => props.movies, () => {
   font-size: 20px;
 }
 .wrapper_date {
-  margin-right: 4%;
+  margin-right: 5%;
 }
 .slide-inner {
   display: flex;
@@ -202,6 +203,8 @@ watch(() => props.movies, () => {
 }
 .slideImg1 {
   margin-left: 20px;
+  color: white;
+  font-size: 30px;
   
 }
 .hi {

@@ -171,17 +171,17 @@ const deleteUser = async () => {
 }
 .inner-cont2 {
   margin-top: 0px;
-  padding: 20px;
-  width: 85%;
+  padding-bottom: 20px;
+  width: 100%;
   text-align: right;
 }
 .userDeleteButton {
   background-color: red;
   color: white;
-  width: 257px;
+  width: 100px;
   border-radius: 5px;
   border: 1px solid red;
   cursor: pointer;
-
+  margin-right: 30px;
 }
 </style>

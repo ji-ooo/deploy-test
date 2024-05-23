@@ -202,6 +202,9 @@ typeEffect(props.prompt);
   margin-top: 10px;
   margin-bottom: 20px;
 }
+.AI-reply > p {
+  line-height: 1.5;
+}
 .AI-reply::before {
   content: '';
   position: absolute;

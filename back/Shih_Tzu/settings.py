@@ -22,6 +22,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 env = environ.Env(DEBUG=(bool, True))
 env.read_env(os.path.join(BASE_DIR, '.env'))
 OPENAI_API_KEY = env('OPENAI_API_KEY')
+# if os.environ.get('OPENAI_API_KEY'):
+#     OPENAI_API_KEY = os.environ['OPENAI_API_KEY']
+# else:
+    # If not, read the .env file
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
@@ -30,22 +34,16 @@ OPENAI_API_KEY = env('OPENAI_API_KEY')
 SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-if DEBUG:
-    ALLOWED_HOSTS = []
-    CORS_ALLOWED_ORIGINS = [
+ALLOWED_HOSTS = []
+
+CORS_ALLOWED_ORIGINS = [
     'http://localhost:8000',
     'http://127.0.0.1:8000',
     'http://localhost:5173',
     'http://127.0.0.1:5173',
 ]
-else:
-    ALLOWED_HOSTS = ['deploy-test-ha4z.onrender.com']
-
-    CORS_ALLOWED_ORIGINS = [
-        'https://deploy-test-1-15u0.onrender.com',
-    ]
 
 # Application definition
 
@@ -139,6 +137,8 @@ DATABASES = {
     }
 }
 
+
+
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 
@@ -180,10 +180,7 @@ if not DEBUG:
 
     STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),
-    os.path.join(BASE_DIR, 'front', 'dist'),
-]
+
 
 # STATICFILES_DIRS = [os.path.join(BASE_DIR, 'assets')]
 

@@ -16,7 +16,8 @@
           <input type="password" v-model="password2" placeholder="비밀번호 재확인" autocomplete="new-password" required>
         </div>
         <div :class="['error-message-container', { shake: shakeError }]">
-          <p class="error-message" v-if="error">ⓘ비밀번호는 8~20자 이내로 영문, 숫자, 특수문자를 혼용하여 입력해 주세요.</p>
+          <!-- <p class="error-message" v-if="error">ⓘ비밀번호는 8~20자 이내로 영문, 숫자, 특수문자를 혼용하여 입력해 주세요.</p> -->
+          <p class="error-message" v-if="error">ⓘ{{ error }}</p>
         </div>
         <button class="register-button" type="submit">Register</button>
         <p class="linktoLogin">이미 계정이 있으신가요? <RouterLink to="/login">로그인</RouterLink></p>
@@ -43,8 +44,8 @@ const error = ref('')
 const shakeError = ref('')
 
 const registerSubmit = async () => {
-  if (password1.value !== password2.value) {
-    error.value = 'Passwords do not match'
+  if (password1.value.length < 8 || password1.value.length > 20) {
+    error.value = '비밀번호는 8 ~ 20자리 입니다.'
     shakeError.value = true
     setTimeout(() => {
       shakeError.value = false
@@ -52,12 +53,23 @@ const registerSubmit = async () => {
     return
   }
 
+  if (password1.value !== password2.value) {
+    error.value = '두 비밀번호가 일치하지 않습니다.'
+    shakeError.value = true
+    setTimeout(() => {
+      shakeError.value = false
+    }, 500)
+    return
+  }
+
+
   try {
     await authStore.register(username.value, password1.value, password2.value)
     router.push('/')
     await this.login()
   } catch (err) {
-    error.value = true
+    console.log(err)
+    error.value = '이미 존재하는 ID입니다.'
     shakeError.value = true
     setTimeout(() => {
       shakeError.value = false

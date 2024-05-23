@@ -57,7 +57,7 @@
           <!-- 지우야 여기야 댓글작성은 여기에! -->
           <div class="comment-write">
             <form class="input-comment" @submit.prevent="commentSubmit(currentSlide.id)">
-              <textarea name="" id="" v-model="commentText" @keyup.enter="submitForm"></textarea>
+              <textarea maxlength="200" v-model="commentText" @keyup.enter="submitForm"></textarea>
               <input type="submit" value="작성">
             </form>
           </div>
@@ -163,6 +163,10 @@ const toggleLike = async (movieId) => {
   try {
     const liked = await store.toggleLike(movieId)
     isLiked.value = liked
+    const message = liked
+      ? `${authStore.user} 님의 컬랙션에 저장되었습니다`
+      : `${authStore.user} 님의 컬랙션에서 삭제되었습니다`;
+    alert(message);
   } catch (error) {
     console.error('Error toggling like:', error);
   }
@@ -380,6 +384,7 @@ strong {
   justify-content: space-between;
 }
 .input-comment > textarea {
+  padding-top: 10px;
   padding-left: 10px;
   width: 87%;
   height: 45px;

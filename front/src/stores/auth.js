@@ -3,6 +3,8 @@ import { defineStore } from 'pinia'
 import axios from 'axios'
 
 const API_URL = import.meta.env.VITE_APP_AUTH_API_URL
+const passwordPattern = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,20}$/;
+
 export const useAuthStore = defineStore('auth', {
   state: () => ({
     token: null,
