@@ -12,3 +12,7 @@ python back/manage.py collectstatic --no-input
 python back/manage.py migrate
 
 python back/manage.py loaddata genres.json movies.json
+
+cd ../front
+npm install
+npm run build

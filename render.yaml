@@ -9,8 +9,7 @@ services:
     plan: free
     name: shih-tzu
     runtime: python
-    rootDir: back
-    buildCommand: "./build.sh"
+    buildCommand: "./back/build.sh"
     startCommand: "python -m gunicorn Shih_Tzu.asgi:application -k uvicorn.workers.UvicornWorker"
     envVars:
       - key: DATABASE_URL
