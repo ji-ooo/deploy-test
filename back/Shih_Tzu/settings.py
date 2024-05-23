@@ -22,10 +22,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 env = environ.Env(DEBUG=(bool, True))
 env.read_env(os.path.join(BASE_DIR, '.env'))
 OPENAI_API_KEY = env('OPENAI_API_KEY')
-# if os.environ.get('OPENAI_API_KEY'):
-#     OPENAI_API_KEY = os.environ['OPENAI_API_KEY']
-# else:
-    # If not, read the .env file
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
@@ -34,7 +30,7 @@ OPENAI_API_KEY = env('OPENAI_API_KEY')
 SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = env('DEBUG', default=False)
 
 ALLOWED_HOSTS = ['deploy-test-ha4z.onrender.com', 'localhost', '127.0.0.1']
 
