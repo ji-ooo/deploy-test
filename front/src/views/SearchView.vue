@@ -86,7 +86,6 @@
               </Slide>
               <template #addons>
                 <navigation />
-                <pagination />
               </template>
             </Carousel>
           </div>

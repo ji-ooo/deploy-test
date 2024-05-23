@@ -59,17 +59,17 @@ def initalize_data_cache():
     if data_cache["df"] is None:
         conn = sqlite3.connect('db.sqlite3')
         query = '''
-        SELECT 
-            id,
-            title,
-            overview,
-            poster_path,
-            vote_avg,
-            released_date,
-            backdrop_path
-        FROM 
-            movies_movie
-        '''
+                SELECT 
+                    id,
+                    title,
+                    overview,
+                    poster_path,
+                    vote_avg,
+                    released_date,
+                    backdrop_path
+                FROM 
+                    movies_movie
+                '''
         df = pd.read_sql_query(query, conn)
         conn.close()
 
@@ -126,11 +126,11 @@ def shihtzu(request):
         movies = Movie.objects.filter(now_playing=True)
     else:
         movies = Movie.objects.filter(now_playing=False)
-    
+
     if preferences.get('time') == 'now':
         time = datetime.now()
         target_time = int(time.strftime("%H")) + 1
-    elif preferences.get('time') == 'left':
+    elif preferences.get('time') == '13:00':
         target_time = 13
     else:
         target_time = 21
@@ -191,7 +191,7 @@ def AIRecommend(request):
 
     if time == 'now':
         time = datetime.now().strftime("%H:%M")
-    elif time == 'left':
+    elif time == '13:00':
         time = '13:00'
     else:
         time = '21:00'

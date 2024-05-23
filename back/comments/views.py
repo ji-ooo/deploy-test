@@ -15,6 +15,7 @@ from accounts.models import User
 def review_list(request):
     if request.method == 'GET':
         reviews = get_list_or_404(Review)
+        reviews = reviews.ordered_by('-id')
         serializer = ReviewListSerializer(reviews, many=True)
         return Response(serializer.data)
 
