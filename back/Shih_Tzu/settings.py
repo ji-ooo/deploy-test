@@ -32,14 +32,10 @@ SECRET_KEY = env('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env('DEBUG', default=False)
 
-ALLOWED_HOSTS = ['deploy-test-ha4z.onrender.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['deploy-test-ha4z.onrender.com']
 
 CORS_ALLOWED_ORIGINS = [
-    'http://localhost:8000',
-    'http://127.0.0.1:8000',
-    'http://localhost:5173',
-    'http://127.0.0.1:5173',
-    'https://deploy-test-ha4z.onrender.com'
+    'https://deploy-test-1-15u0.onrender.com',
 ]
 
 # Application definition

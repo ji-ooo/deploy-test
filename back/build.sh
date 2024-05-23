@@ -12,7 +12,3 @@ python manage.py collectstatic --no-input
 python manage.py migrate
 
 python manage.py loaddata genres.json movies.json
-
-cd ../front
-npm install
-npm run build
