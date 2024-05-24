@@ -111,6 +111,8 @@ def get_recommendations(id, cos_sim=cos_sim):
 
     return recommendations
 
+@api_view(['GET'])
+@authentication_classes([TokenAuthentication])
 def similar(request, movie_id):
     recommend_movies = get_recommendations(movie_id)
     recommendations_list = recommend_movies.to_dict(orient='records')
